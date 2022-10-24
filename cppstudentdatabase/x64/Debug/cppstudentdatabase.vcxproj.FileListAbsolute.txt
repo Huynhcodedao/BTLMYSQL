@@ -1,0 +1,8 @@
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\x64\Debug\cppstudentdatabase.vcxproj.AssemblyReference.cache
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\x64\Debug\cppstudentdatabase.vcxproj.SuggestedBindingRedirects.cache
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\x64\Debug\cppstudentdatabase.MyForm.resources
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\x64\Debug\cppstudentdatabase.vcxproj.GenerateResource.cache
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\x64\Debug\cppstudentdatabase.vcxproj.CopyComplete
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\x64\Debug\cppstudentdatabase.MyForm2.resources
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\x64\Debug\cppstudentdatabase.Login.resources
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\x64\Debug\cppstudentdatabase.Register.resources

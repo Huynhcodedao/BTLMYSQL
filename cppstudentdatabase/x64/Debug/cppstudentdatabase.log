@@ -1,0 +1,16 @@
+﻿  MyForm.cpp
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1801,34): warning C4566: character represented by universal-character-name '\u0110' cannot be represented in the current code page (1252)
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1924,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1925,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1926,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1927,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1928,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1929,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1930,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1931,33): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm.h(1972,1): warning C4305: '=': truncation from 'double' to 'float'
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm2.h(490,20): warning C4101: 'ex': unreferenced local variable
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\MyForm2.h(531,20): warning C4101: 'ex': unreferenced local variable
+C:\BTL_MYSQL\cppstudentdatabase\cppstudentdatabase\Register.h(402,20): warning C4101: 'ex': unreferenced local variable
+  MyForm.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
+  cppstudentdatabase.vcxproj -> C:\BTL_MYSQL\cppstudentdatabase\x64\Debug\cppstudentdatabase.exe
