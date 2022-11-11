@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32922.545
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cppstudentdatabase", "cppstudentdatabase\cppstudentdatabase.vcxproj", "{506D6C2D-4F13-4057-8797-2551F98EA6BC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{506D6C2D-4F13-4057-8797-2551F98EA6BC}.Debug|x64.ActiveCfg = Debug|x64
+		{506D6C2D-4F13-4057-8797-2551F98EA6BC}.Debug|x64.Build.0 = Debug|x64
+		{506D6C2D-4F13-4057-8797-2551F98EA6BC}.Debug|x86.ActiveCfg = Debug|Win32
+		{506D6C2D-4F13-4057-8797-2551F98EA6BC}.Debug|x86.Build.0 = Debug|Win32
+		{506D6C2D-4F13-4057-8797-2551F98EA6BC}.Release|x64.ActiveCfg = Release|x64
+		{506D6C2D-4F13-4057-8797-2551F98EA6BC}.Release|x64.Build.0 = Release|x64
+		{506D6C2D-4F13-4057-8797-2551F98EA6BC}.Release|x86.ActiveCfg = Release|Win32
+		{506D6C2D-4F13-4057-8797-2551F98EA6BC}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {AE34F0EF-AB20-422A-AEC7-147519C46B92}
+	EndGlobalSection
+EndGlobal
