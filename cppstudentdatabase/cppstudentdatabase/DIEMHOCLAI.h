@@ -43,6 +43,12 @@ namespace cppstudentdatabase {
 		MySqlDataAdapter^ sqlDta3 = gcnew MySqlDataAdapter();
 		MySqlDataReader^ sqlDd3;
 		DataSet^ DS3 = gcnew DataSet(); String^ sqlQuery3;
+		MySqlConnection^ sqlConn4 = gcnew MySqlConnection();
+		MySqlCommand^ sqlCmd4 = gcnew MySqlCommand();
+		DataTable^ sqlDt4 = gcnew DataTable();
+		MySqlDataAdapter^ sqlDta4 = gcnew MySqlDataAdapter();
+		MySqlDataReader^ sqlDd4;
+		DataSet^ DS4 = gcnew DataSet(); String^ sqlQuery4;
 	private: System::Windows::Forms::ComboBox^ txtok;
 
 
@@ -482,8 +488,8 @@ private: System::Void cboKhoaHoc_SelectedIndexChanged(System::Object^ sender, Sy
 
 	try {
 		sqlConn->Open();
-		cboLop->Items->Clear();
-		cboLop->Text = "";
+		//cboLop->Items->Clear();
+		//cboLop->Text = "";
 		String^ aa = "Select ClassName from class where FacultyName = '" + cboKhoaHoc->Text + "'";
 		sqlCmd = gcnew MySqlCommand(aa, sqlConn);
 		sqlDd = sqlCmd->ExecuteReader();
@@ -589,6 +595,28 @@ private: System::Void cboMonHoc_SelectedIndexChanged(System::Object^ sender, Sys
 	
 }
 private: System::Void txtMaSV_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	sqlConn4->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" + password + ";" + "database=" + database;
+	try {
+		sqlConn4->Open();
+		//cboKhoaHoc->Items->Clear();
+		//cboKhoaHoc->Text = "";
+		String^ iio = "select (select (SELECT FacultyName from faculty as p where p.Facultycode = c.Facultycode) from class c where c.ClassCode = x.ClassCode) from student as x where x.StudentID = '" + txtMaSV->Text + "'";
+		sqlCmd4 = gcnew MySqlCommand(iio, sqlConn4);
+		sqlDd4 = sqlCmd4->ExecuteReader();
+		while (sqlDd4->Read()) {
+			String^ sao1 = sqlDd4->GetString(0);
+			cboKhoaHoc->Text = sao1;
+			sqlConn4->Close();
+		}
+	}
+
+	catch (Exception^ ex) {
+		//MessageBox::Show(ex->Message);
+	}
+	finally {
+		sqlConn4->Close();
+	}
+
 	sqlConn1->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" + password + ";" + "database=" + database;
 	try {
 		sqlConn1->Open();

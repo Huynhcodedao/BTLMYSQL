@@ -312,7 +312,7 @@ namespace cppstudentdatabase {
 			sqlQuery = "insert into faculty( Facultycode, FacultyName)" + "value('" +txtKhoa->Text+"','"+txtTenKhoa->Text + "')";
 			
 			sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
-			sqlDd = sqlCmd->ExecuteReader();
+			sqlDd = sqlCmd->ExecuteReader();MessageBox::Show("Student Management System Update");
 			sqlConn->Close();
 		}
 		catch (Exception^ ex) {
@@ -321,7 +321,7 @@ namespace cppstudentdatabase {
 		finally {
 			sqlConn->Close();
 		}
-		MessageBox::Show("Student Management System Update");
+		
 		KhoaUpload();
 
 	}
@@ -353,7 +353,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 		}
 		sqlQuery = "delete from faculty where Facultycode = '" + txtKhoa->Text + "'";
 		sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
-		sqlDd = sqlCmd->ExecuteReader();
+		sqlDd = sqlCmd->ExecuteReader();MessageBox::Show("Deleted faculty data!");
 		sqlConn->Close();
 		
 	}
@@ -363,7 +363,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 	finally {
 		sqlConn->Close();
 	}
-	MessageBox::Show("Deleted faculty data!");
+	
 	Load22();
 	KhoaUpload();
 

@@ -2,7 +2,7 @@
 <Project>
   <ProjectOutputs>
     <ProjectOutput>
-      <FullPath>C:\BTL_MYSQL\cppstudentdatabase\x64\Debug\cppstudentdatabase.exe</FullPath>
+      <FullPath>C:\BTL_MYSQL\BTLMYSQL\cppstudentdatabase\x64\Debug\cppstudentdatabase.exe</FullPath>
     </ProjectOutput>
   </ProjectOutputs>
   <ContentFiles />

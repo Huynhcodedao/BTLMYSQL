@@ -679,7 +679,7 @@ private: System::Void btnXoa_Click(System::Object^ sender, System::EventArgs^ e)
 		}
 		sqlQuery = "delete from student where StudentID = '" + txtMaSV->Text + "'";
 		sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
-		sqlDd = sqlCmd->ExecuteReader();
+		sqlDd = sqlCmd->ExecuteReader();MessageBox::Show("Deleted student data!");
 		sqlConn->Close();
 
 	}
@@ -689,7 +689,7 @@ private: System::Void btnXoa_Click(System::Object^ sender, System::EventArgs^ e)
 	finally {
 		sqlConn->Close();
 	}
-	MessageBox::Show("Deleted student data!");
+	
 	Upload();
 	
 	userUpload();

@@ -398,7 +398,7 @@ private: System::Void btnOk_Click(System::Object^ sender, System::EventArgs^ e) 
 		sqlConn->Open();
 		sqlQuery = "INSERT INTO edata(Eid, name, Phone, user_name, password)" + "value('" + txtID->Text + "', '" + txtName->Text + "', '" + txtPhone->Text + "', '" + txtUsername->Text + "', '" + txtPassword->Text + "')";
 		sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
-		sqlDd = sqlCmd->ExecuteReader();
+		sqlDd = sqlCmd->ExecuteReader();MessageBox::Show("Registered a new user");
 		sqlConn->Close();
 	}
 	catch (Exception^ ex) {
@@ -407,7 +407,7 @@ private: System::Void btnOk_Click(System::Object^ sender, System::EventArgs^ e) 
 	finally {
 		sqlConn->Close();
 	}
-	MessageBox::Show("Registered a new user");
+	
 }
 	   public: bool swicthToLogin = false;
 private: System::Void linkLogin_LinkClicked(System::Object^ sender, System::Windows::Forms::LinkLabelLinkClickedEventArgs^ e) {

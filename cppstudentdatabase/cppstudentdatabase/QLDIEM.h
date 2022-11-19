@@ -43,6 +43,13 @@ namespace cppstudentdatabase {
 		MySqlDataAdapter^ sqlDta3 = gcnew MySqlDataAdapter();
 		MySqlDataReader^ sqlDd3;
 		DataSet^ DS3 = gcnew DataSet(); String^ sqlQuery3;
+
+		MySqlConnection^ sqlConn4 = gcnew MySqlConnection();
+		MySqlCommand^ sqlCmd4 = gcnew MySqlCommand();
+		DataTable^ sqlDt4 = gcnew DataTable();
+		MySqlDataAdapter^ sqlDta4 = gcnew MySqlDataAdapter();
+		MySqlDataReader^ sqlDd4;
+		DataSet^ DS4 = gcnew DataSet(); String^ sqlQuery4;
 	private: System::Windows::Forms::TextBox^ txtScode;
 	private: System::Windows::Forms::Label^ label10;
 
@@ -611,7 +618,7 @@ private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 	}
 
 	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
+		//MessageBox::Show(ex->Message);
 	}
 	finally {
 		sqlConn->Close();
@@ -649,8 +656,8 @@ private: System::Void cboKhoaHoc_SelectedIndexChanged(System::Object^ sender, Sy
 	
 	try {
 	sqlConn->Open();
-	cboLop->Items->Clear();
-	cboLop->Text = "";
+	//cboLop->Items->Clear();
+	//cboLop->Text = "";
 	String^ aa = "Select ClassName from class where FacultyName = '"+cboKhoaHoc->Text+"'";
 	sqlCmd = gcnew MySqlCommand(aa, sqlConn);
 	sqlDd = sqlCmd->ExecuteReader();
@@ -662,7 +669,7 @@ private: System::Void cboKhoaHoc_SelectedIndexChanged(System::Object^ sender, Sy
 	}
 
 	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
+		//MessageBox::Show(ex->Message);
 	}
 	finally {
 		sqlConn->Close();
@@ -691,6 +698,29 @@ private: System::Void btnExit_Click(System::Object^ sender, System::EventArgs^ e
 	this->Close();
 }
 private: System::Void txtMaSV_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	// Add khao vào cbo
+	sqlConn4->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" + password + ";" + "database=" + database;
+	try {
+		sqlConn4->Open();
+		//cboKhoaHoc->Items->Clear();
+		//cboKhoaHoc->Text = "";
+		String^ iio = "select (select (SELECT FacultyName from faculty as p where p.Facultycode = c.Facultycode) from class c where c.ClassCode = x.ClassCode) from student as x where x.StudentID = '" + txtMaSV->Text + "'";
+		sqlCmd4 = gcnew MySqlCommand(iio, sqlConn4);
+		sqlDd4 = sqlCmd4->ExecuteReader();
+		while (sqlDd4->Read()) {
+			String^ sao1 = sqlDd4->GetString(0);
+			cboKhoaHoc->Text = sao1;
+			sqlConn4->Close();
+		}
+	}
+
+	catch (Exception^ ex) {
+		//MessageBox::Show(ex->Message);
+	}
+	finally {
+		sqlConn4->Close();
+	}
+
 	//Tự thêm tên lớp vào cbo
 	sqlConn1->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" + password + ";" + "database=" + database;
 	try {
@@ -761,7 +791,7 @@ private: System::Void cboMonHoc_SelectedIndexChanged(System::Object^ sender, Sys
 	}
 
 	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
+		//MessageBox::Show(ex->Message);
 	}
 	finally {
 		sqlConn1->Close();
@@ -864,7 +894,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 		}
 		sqlQuery = "delete from result where SubjectCode = '" + txtScode->Text + "'";
 		sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
-		sqlDd = sqlCmd->ExecuteReader();
+		sqlDd = sqlCmd->ExecuteReader();MessageBox::Show("Deleted result data!");
 		sqlConn->Close();
 
 	}
@@ -874,7 +904,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 	finally {
 		sqlConn->Close();
 	}
-	MessageBox::Show("Deleted result data!");
+	
 	Upload();
 	userUpload();
 }
@@ -954,7 +984,7 @@ private: System::Void btnSua_Click(System::Object^ sender, System::EventArgs^ e)
 	}
 
 	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
+		//MessageBox::Show(ex->Message);
 	}
 	finally {
 		sqlConn->Close();

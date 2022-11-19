@@ -43,6 +43,7 @@ namespace cppstudentdatabase {
 		MySqlDataAdapter^ sqlDta3 = gcnew MySqlDataAdapter();
 		MySqlDataReader^ sqlDd3;
 		DataSet^ DS3 = gcnew DataSet(); String^ sqlQuery3;
+	private: System::Windows::Forms::DataGridView^ dataGridViewhoclai;
 	public:
 		DSTHILAI(void)
 		{
@@ -112,9 +113,11 @@ namespace cppstudentdatabase {
 			this->label8 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->dataGridviewThiLai = (gcnew System::Windows::Forms::DataGridView());
+			this->dataGridViewhoclai = (gcnew System::Windows::Forms::DataGridView());
 			this->groupBox2->SuspendLayout();
 			this->groupBox3->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridviewThiLai))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewhoclai))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// btnXuat
@@ -310,12 +313,23 @@ namespace cppstudentdatabase {
 			// 
 			this->dataGridviewThiLai->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
 			this->dataGridviewThiLai->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
-			this->dataGridviewThiLai->Location = System::Drawing::Point(247, 422);
+			this->dataGridviewThiLai->Location = System::Drawing::Point(247, 387);
 			this->dataGridviewThiLai->Margin = System::Windows::Forms::Padding(4);
 			this->dataGridviewThiLai->Name = L"dataGridviewThiLai";
 			this->dataGridviewThiLai->RowHeadersWidth = 51;
-			this->dataGridviewThiLai->Size = System::Drawing::Size(1210, 304);
+			this->dataGridviewThiLai->Size = System::Drawing::Size(1210, 169);
 			this->dataGridviewThiLai->TabIndex = 12;
+			// 
+			// dataGridViewhoclai
+			// 
+			this->dataGridViewhoclai->BackgroundColor = System::Drawing::SystemColors::ActiveCaption;
+			this->dataGridViewhoclai->ColumnHeadersHeightSizeMode = System::Windows::Forms::DataGridViewColumnHeadersHeightSizeMode::AutoSize;
+			this->dataGridViewhoclai->Location = System::Drawing::Point(247, 564);
+			this->dataGridViewhoclai->Margin = System::Windows::Forms::Padding(4);
+			this->dataGridViewhoclai->Name = L"dataGridViewhoclai";
+			this->dataGridViewhoclai->RowHeadersWidth = 51;
+			this->dataGridViewhoclai->Size = System::Drawing::Size(1210, 228);
+			this->dataGridViewhoclai->TabIndex = 19;
 			// 
 			// DSTHILAI
 			// 
@@ -323,6 +337,7 @@ namespace cppstudentdatabase {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(1873, 1051);
+			this->Controls->Add(this->dataGridViewhoclai);
 			this->Controls->Add(this->dataGridviewThiLai);
 			this->Controls->Add(this->btnXuat);
 			this->Controls->Add(this->groupBox2);
@@ -337,6 +352,7 @@ namespace cppstudentdatabase {
 			this->groupBox3->ResumeLayout(false);
 			this->groupBox3->PerformLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridviewThiLai))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridViewhoclai))->EndInit();
 			this->ResumeLayout(false);
 			this->PerformLayout();
 
@@ -347,7 +363,7 @@ namespace cppstudentdatabase {
 			 sqlConn->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" + password + ";" + "database=" + database;
 			 sqlConn->Open();
 			 sqlCmd->Connection = sqlConn;
-			 sqlCmd->CommandText = "select *from hoccaithien";
+			 sqlCmd->CommandText = "select *from hoccaithien where SubjectName = '"+cboMonHoc->Text+"' and ClassName='"+cboLop->Text+"'";
 			 sqlDd = sqlCmd->ExecuteReader();
 			 sqlDt->Load(sqlDd);
 			 sqlDd->Close();
@@ -355,17 +371,17 @@ namespace cppstudentdatabase {
 			 dataGridviewThiLai->DataSource = sqlDt;
 
 		 }
-				 private: System::Void Upload2() {
+		private: System::Void Upload2() {
 
-					 sqlConn->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" + password + ";" + "database=" + database;
-					 sqlConn->Open();
-					 sqlCmd->Connection = sqlConn;
-					 sqlCmd->CommandText = "select *from result where ScoreTotal = '0'";
-					 sqlDd = sqlCmd->ExecuteReader();
-					 sqlDt->Load(sqlDd);
-					 sqlDd->Close();
-					 sqlConn->Close();
-					 dataGridviewThiLai->DataSource = sqlDt;
+			sqlConn1->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" + password + ";" + "database=" + database;
+			sqlConn1->Open();
+			sqlCmd1->Connection = sqlConn1;
+			sqlCmd1->CommandText = "select *from result where ScoreTotal = '0' and SubjectName ='"+cboMonHoc->Text +"' and  Faculty='"+cboKhoaHoc->Text+"'and HK ='"+cboHocKi->Text+"' ";
+			sqlDd1 = sqlCmd1->ExecuteReader();
+			sqlDt1->Load(sqlDd1);
+			sqlDd1->Close();
+			sqlConn1->Close();
+			dataGridViewhoclai->DataSource = sqlDt1;
 
 				 }
 	private: System::Void DSTHILAI_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -382,7 +398,7 @@ namespace cppstudentdatabase {
 		while (sqlDd1->Read()) {
 			cboKhoaHoc->Items->Add(sqlDd1->GetString(0));
 		}
-		sqlConn->Close();
+		sqlConn1->Close();
 		
 	}
 private: System::Void cboKhoaHoc_SelectedIndexChanged(System::Object^ sender, System::EventArgs^ e) {
@@ -431,7 +447,7 @@ private: System::Void cboKhoaHoc_SelectedIndexChanged(System::Object^ sender, Sy
 	}
 
 	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
+		//MessageBox::Show(ex->Message);
 	}
 	finally {
 		sqlConn->Close();
@@ -457,7 +473,7 @@ private: System::Void cboMonHoc_SelectedIndexChanged(System::Object^ sender, Sys
 	}
 
 	catch (Exception^ ex) {
-		MessageBox::Show(ex->Message);
+		//MessageBox::Show(ex->Message);
 	}
 	finally {
 		sqlConn->Close();
@@ -467,10 +483,19 @@ private: System::Void cboMonHoc_SelectedIndexChanged(System::Object^ sender, Sys
 
 }
 private: System::Void btnTimKiem_Click(System::Object^ sender, System::EventArgs^ e) {
+	try {
 	if (cboLoai->Text == "Hoc cai thien") {
 		Upload1();
 	}
+	else {
 	Upload2();
+	}
+	
+	}
+	catch (Exception^ ex) {
+
+	}
+	
 
 }
 private: System::Void btnXuat_Click(System::Object^ sender, System::EventArgs^ e) {

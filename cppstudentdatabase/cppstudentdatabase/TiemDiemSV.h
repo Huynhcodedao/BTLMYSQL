@@ -403,8 +403,6 @@ private: System::Void btnXuat_Click(System::Object^ sender, System::EventArgs^ e
 			Microsoft::Office::Interop::Excel::_Worksheet^ worksheet = nullptr;
 			// see the excel sheet behind the program  
 			xcelApp->Visible = true;
-
-
 			worksheet == workbook->Sheets["Sheet1"];
 			worksheet == workbook->ActiveSheet;
 			// changing the name of active sheet  

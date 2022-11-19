@@ -220,6 +220,7 @@ namespace cppstudentdatabase {
 			this->groupBox1->TabIndex = 14;
 			this->groupBox1->TabStop = false;
 			this->groupBox1->Text = L"Thông tin chi tiết";
+			this->groupBox1->Enter += gcnew System::EventHandler(this, &MONHOC::groupBox1_Enter);
 			// 
 			// cboGV
 			// 
@@ -446,7 +447,7 @@ private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 
 		sqlQuery = "insert into subject1(SubjectCode, SubjectName,DVHT, GVCode, HK, Facultycode)" + "value('" + txtMaMon->Text + "','" + txtTenMon->Text + "','" + txtSDVHT->Text +"','"+cboGV->Text+"','"+txtHocKy->Text+"','"+cboKhoa->Text + "')";
 		sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
-		sqlDd = sqlCmd->ExecuteReader();
+		sqlDd = sqlCmd->ExecuteReader();MessageBox::Show("Student Management System Update");
 		sqlConn->Close();
 	}
 
@@ -456,7 +457,7 @@ private: System::Void btnAdd_Click(System::Object^ sender, System::EventArgs^ e)
 	finally {
 		sqlConn->Close();
 	}
-	MessageBox::Show("Student Management System Update");
+	
 	Upload();
 }
 private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -480,7 +481,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 		}
 		sqlQuery = "delete from subject1 where SubjectCode = '" + txtMaMon->Text + "'";
 		sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
-		sqlDd = sqlCmd->ExecuteReader();
+		sqlDd = sqlCmd->ExecuteReader();MessageBox::Show("Deleted subject data!");
 		sqlConn->Close();
 
 	}
@@ -490,7 +491,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 	finally {
 		sqlConn->Close();
 	}
-	MessageBox::Show("Deleted subject data!");
+	
 
 	Upload();
 }
@@ -533,6 +534,8 @@ private: System::Void btnSua_Click(System::Object^ sender, System::EventArgs^ e)
 	finally {
 		sqlConn->Close();
 	}
+}
+private: System::Void groupBox1_Enter(System::Object^ sender, System::EventArgs^ e) {
 }
 };
 }

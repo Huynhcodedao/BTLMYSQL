@@ -262,6 +262,7 @@ namespace cppstudentdatabase {
 			this->txtMaLop->Name = L"txtMaLop";
 			this->txtMaLop->Size = System::Drawing::Size(208, 26);
 			this->txtMaLop->TabIndex = 1;
+			this->txtMaLop->TextChanged += gcnew System::EventHandler(this, &LOP::txtMaLop_TextChanged);
 			// 
 			// txtTenlop
 			// 
@@ -373,7 +374,7 @@ namespace cppstudentdatabase {
 		
 			sqlQuery = "insert into class(ClassCode, ClassName, Facultycode, FacultyName)" + "value('" +txtMaLop->Text+"',N'"+txtTenlop->Text+"','"+cboKhoa->Text+ "','"+txtFacultyName->Text+"')";
 			sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
-			sqlDd = sqlCmd->ExecuteReader();
+			sqlDd = sqlCmd->ExecuteReader();MessageBox::Show("Student Management System Update");
 			sqlConn->Close();
 		}
 
@@ -383,7 +384,7 @@ namespace cppstudentdatabase {
 		finally {
 			sqlConn->Close();
 		}
-		MessageBox::Show("Student Management System Update");
+		
 		Upload();
 		
 	}
@@ -451,7 +452,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 		}
 		sqlQuery = "delete from class where ClassCode = '" + txtMaLop->Text + "'";
 		sqlCmd = gcnew MySqlCommand(sqlQuery, sqlConn);
-		sqlDd = sqlCmd->ExecuteReader();
+		sqlDd = sqlCmd->ExecuteReader();MessageBox::Show("Deleted class data!");
 		sqlConn->Close();
 
 	}
@@ -461,7 +462,7 @@ private: System::Void btnDelete_Click(System::Object^ sender, System::EventArgs^
 	finally {
 		sqlConn->Close();
 	}
-	MessageBox::Show("Deleted class data!");
+	
 	Upload();
 
 }
@@ -495,6 +496,29 @@ private: System::Void btnSua_Click(System::Object^ sender, System::EventArgs^ e)
 	}
 
 	Upload();
+}
+private: System::Void txtMaLop_TextChanged(System::Object^ sender, System::EventArgs^ e) {
+	sqlConn1->ConnectionString = "server=" + server + ";" + "username=" + username + ";" + "password=" + password + ";" + "database=" + database;
+
+	try {
+		sqlConn1->Open();
+		txtTenlop->Clear();
+		txtTenlop->Text = "";
+		String^ mon = "Select ClassName from class where ClassCode ='" + txtMaLop->Text + "' ";
+		sqlCmd1 = gcnew MySqlCommand(mon, sqlConn1);
+		sqlDd1 = sqlCmd1->ExecuteReader();
+		sqlDd1->Read();
+		String^ du = sqlDd1->GetString(0);
+		txtTenlop->Text = du;
+		sqlConn1->Close();
+	}
+
+	catch (Exception^ ex) {
+		//MessageBox::Show(ex->Message);
+	}
+	finally {
+		sqlConn1->Close();
+	}
 }
 };
 }
